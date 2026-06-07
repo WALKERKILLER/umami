@@ -62,7 +62,7 @@ export function WebsitePanels({ websiteId }: { websiteId: string }) {
         </Panel>
       </GridRow>
 
-      <GridRow layout="two" {...rowProps}>
+      <GridRow layout={isSharePage ? 'one' : 'two'} {...rowProps}>
         <Panel>
           <Heading size="2">{formatMessage(labels.environment)}</Heading>
           <Tabs>
@@ -110,7 +110,7 @@ export function WebsitePanels({ websiteId }: { websiteId: string }) {
         )}
       </GridRow>
 
-      <GridRow layout="two-one" {...rowProps}>
+      <GridRow layout={isSharePage ? 'one' : 'two-one'} {...rowProps}>
         {!isSharePage && (
           <Panel gridColumn={{ xs: 'span 1', md: 'span 2' }} paddingX="0" paddingY="0">
             <WorldMap websiteId={websiteId} />
