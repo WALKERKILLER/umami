@@ -47,7 +47,12 @@ export const MetricCard = ({
           {label}
         </Text>
       )}
-      <Text size="8" weight="bold" wrap="nowrap">
+      <Text
+        size="6"
+        weight="bold"
+        wrap="nowrap"
+        style={{ overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}
+      >
         <AnimatedDiv title={value?.toString()}>{props?.x?.to(x => formatValue(x))}</AnimatedDiv>
       </Text>
       {showChange && (
