@@ -1,4 +1,5 @@
 import { Grid, Heading, Row, Tab, TabList, TabPanel, Tabs } from '@umami/react-zen';
+import { YourTJCard } from '@/app/share/[...shareId]/YourTJCard';
 import { GridRow } from '@/components/common/GridRow';
 import { Panel } from '@/components/common/Panel';
 import { useMessages, useNavigation } from '@/components/hooks';
@@ -19,69 +20,88 @@ export function WebsitePanels({ websiteId }: { websiteId: string }) {
   const rowProps = { minHeight: '570px' };
   const isSharePage = pathname.includes('/share/');
 
+  const CardWrapper = ({ index, children }: { index: number; children: React.ReactNode }) => {
+    if (!isSharePage) return <>{children}</>;
+    return <YourTJCard index={index}>{children}</YourTJCard>;
+  };
+
   return (
     <Grid gap="3">
       <GridRow layout="two" {...rowProps}>
-        <Panel>
-          <Heading size="2">{formatMessage(labels.pages)}</Heading>
-          <Tabs>
-            <TabList>
-              <Tab id="path">{formatMessage(labels.path)}</Tab>
-              <Tab id="entry">{formatMessage(labels.entry)}</Tab>
-              <Tab id="exit">{formatMessage(labels.exit)}</Tab>
-            </TabList>
-            <TabPanel id="path">
-              <MetricsTable type="path" title={formatMessage(labels.path)} {...tableProps} />
-            </TabPanel>
-            <TabPanel id="entry">
-              <MetricsTable type="entry" title={formatMessage(labels.path)} {...tableProps} />
-            </TabPanel>
-            <TabPanel id="exit">
-              <MetricsTable type="exit" title={formatMessage(labels.path)} {...tableProps} />
-            </TabPanel>
-          </Tabs>
-        </Panel>
-        <Panel>
-          <Heading size="2">{formatMessage(labels.sources)}</Heading>
-          <Tabs>
-            <TabList>
-              <Tab id="referrer">{formatMessage(labels.referrers)}</Tab>
-              <Tab id="channel">{formatMessage(labels.channels)}</Tab>
-            </TabList>
-            <TabPanel id="referrer">
-              <MetricsTable
-                type="referrer"
-                title={formatMessage(labels.referrer)}
-                {...tableProps}
-              />
-            </TabPanel>
-            <TabPanel id="channel">
-              <MetricsTable type="channel" title={formatMessage(labels.channel)} {...tableProps} />
-            </TabPanel>
-          </Tabs>
-        </Panel>
+        <CardWrapper index={0}>
+          <Panel>
+            <Heading size="2">{formatMessage(labels.pages)}</Heading>
+            <Tabs>
+              <TabList>
+                <Tab id="path">{formatMessage(labels.path)}</Tab>
+                <Tab id="entry">{formatMessage(labels.entry)}</Tab>
+                <Tab id="exit">{formatMessage(labels.exit)}</Tab>
+              </TabList>
+              <TabPanel id="path">
+                <MetricsTable type="path" title={formatMessage(labels.path)} {...tableProps} />
+              </TabPanel>
+              <TabPanel id="entry">
+                <MetricsTable type="entry" title={formatMessage(labels.path)} {...tableProps} />
+              </TabPanel>
+              <TabPanel id="exit">
+                <MetricsTable type="exit" title={formatMessage(labels.path)} {...tableProps} />
+              </TabPanel>
+            </Tabs>
+          </Panel>
+        </CardWrapper>
+        <CardWrapper index={1}>
+          <Panel>
+            <Heading size="2">{formatMessage(labels.sources)}</Heading>
+            <Tabs>
+              <TabList>
+                <Tab id="referrer">{formatMessage(labels.referrers)}</Tab>
+                <Tab id="channel">{formatMessage(labels.channels)}</Tab>
+              </TabList>
+              <TabPanel id="referrer">
+                <MetricsTable
+                  type="referrer"
+                  title={formatMessage(labels.referrer)}
+                  {...tableProps}
+                />
+              </TabPanel>
+              <TabPanel id="channel">
+                <MetricsTable
+                  type="channel"
+                  title={formatMessage(labels.channel)}
+                  {...tableProps}
+                />
+              </TabPanel>
+            </Tabs>
+          </Panel>
+        </CardWrapper>
       </GridRow>
 
       <GridRow layout={isSharePage ? 'one' : 'two'} {...rowProps}>
-        <Panel>
-          <Heading size="2">{formatMessage(labels.environment)}</Heading>
-          <Tabs>
-            <TabList>
-              <Tab id="browser">{formatMessage(labels.browsers)}</Tab>
-              <Tab id="os">{formatMessage(labels.os)}</Tab>
-              <Tab id="device">{formatMessage(labels.devices)}</Tab>
-            </TabList>
-            <TabPanel id="browser">
-              <MetricsTable type="browser" title={formatMessage(labels.browser)} {...tableProps} />
-            </TabPanel>
-            <TabPanel id="os">
-              <MetricsTable type="os" title={formatMessage(labels.os)} {...tableProps} />
-            </TabPanel>
-            <TabPanel id="device">
-              <MetricsTable type="device" title={formatMessage(labels.device)} {...tableProps} />
-            </TabPanel>
-          </Tabs>
-        </Panel>
+        <CardWrapper index={2}>
+          <Panel>
+            <Heading size="2">{formatMessage(labels.environment)}</Heading>
+            <Tabs>
+              <TabList>
+                <Tab id="browser">{formatMessage(labels.browsers)}</Tab>
+                <Tab id="os">{formatMessage(labels.os)}</Tab>
+                <Tab id="device">{formatMessage(labels.devices)}</Tab>
+              </TabList>
+              <TabPanel id="browser">
+                <MetricsTable
+                  type="browser"
+                  title={formatMessage(labels.browser)}
+                  {...tableProps}
+                />
+              </TabPanel>
+              <TabPanel id="os">
+                <MetricsTable type="os" title={formatMessage(labels.os)} {...tableProps} />
+              </TabPanel>
+              <TabPanel id="device">
+                <MetricsTable type="device" title={formatMessage(labels.device)} {...tableProps} />
+              </TabPanel>
+            </Tabs>
+          </Panel>
+        </CardWrapper>
 
         {!isSharePage && (
           <Panel>
@@ -117,11 +137,13 @@ export function WebsitePanels({ websiteId }: { websiteId: string }) {
           </Panel>
         )}
 
-        <Panel>
-          <Heading size="2">{formatMessage(labels.traffic)}</Heading>
-          <Row border="bottom" marginBottom="4" />
-          <WeeklyTraffic websiteId={websiteId} />
-        </Panel>
+        <CardWrapper index={3}>
+          <Panel>
+            <Heading size="2">{formatMessage(labels.traffic)}</Heading>
+            <Row border="bottom" marginBottom="4" />
+            <WeeklyTraffic websiteId={websiteId} />
+          </Panel>
+        </CardWrapper>
       </GridRow>
     </Grid>
   );
