@@ -109,9 +109,13 @@ export function Header() {
 
         {/* Logo Container */}
         <div className="relative z-10 w-20 h-20 md:w-28 md:h-28 flex items-center justify-center bg-white dark:bg-wabi-dark-subtle rounded-full shadow-sm border-2 border-stone-50 dark:border-wabi-dark-stone group-hover:scale-105 group-hover:shadow-md transition-all duration-500">
-          <span className="text-2xl md:text-3xl font-extrabold text-goose-blue-600 dark:text-goose-blue-400">
-            YourTJ
-          </span>
+          <img
+            src="/yourtj-logo.png"
+            alt="YourTJ Logo"
+            width={160}
+            height={160}
+            className="w-14 h-14 md:w-20 md:h-20 object-contain opacity-95 group-hover:opacity-100 transition-opacity duration-300"
+          />
         </div>
 
         {/* Subtle glow on hover */}
@@ -154,15 +158,8 @@ export function Header() {
           </div>
         </h1>
 
-        {/* Subtitle */}
-        <div className="mt-6 md:mt-8 relative inline-block w-full max-w-[92%] sm:max-w-[90%] mx-auto px-6 animate-fade-in-up-delayed">
-          <p className="text-wabi-muted dark:text-wabi-dark-muted text-base sm:text-lg md:text-xl font-sans leading-relaxed tracking-wide opacity-80">
-            匿名、隐私优先的网站访问量统计
-          </p>
-        </div>
-
-        {/* Small decorative dots */}
-        <div className="mt-6 flex justify-center gap-3 opacity-40" aria-hidden="true">
+        {/* Decorative dots */}
+        <div className="mt-8 flex justify-center gap-3 opacity-40" aria-hidden="true">
           <div
             className="w-2 h-2 rounded-full bg-goose-blue-300 dark:bg-goose-blue-400 animate-pulse"
             style={{ animationDelay: '0s', animationDuration: '3s' }}

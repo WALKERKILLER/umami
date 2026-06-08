@@ -39,7 +39,11 @@ export const MetricCard = ({
       border
     >
       {showLabel && (
-        <Text weight="bold" wrap="nowrap">
+        <Text
+          weight="bold"
+          wrap="nowrap"
+          style={{ overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%' }}
+        >
           {label}
         </Text>
       )}
