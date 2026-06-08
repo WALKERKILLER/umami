@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Match react-zen's data-theme attribute for dark mode */
+@custom-variant dark (&:is([data-theme="dark"] *));
+
 @theme {
   --color-goose-blue-50: #f2fafa;
   --color-goose-blue-100: #e0f4f7;
