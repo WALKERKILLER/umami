@@ -166,5 +166,10 @@
     "tsup": "^8.5.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "intl-messageformat-parser": "5.4.2"
+    }
   }
 }

@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  intl-messageformat-parser: 5.4.2
+
 importers:
 
   .:
@@ -1018,9 +1021,6 @@ packages:
 
   '@formatjs/ecma402-abstract@1.4.0':
     resolution: {integrity: sha512-Mv027hcLFjE45K8UJ8PjRpdDGfR0aManEFj1KzoN8zXNveHGEygpZGfFf/FTTMl+QEVSrPAUlyxaCApvmv47AQ==}
-
-  '@formatjs/ecma402-abstract@1.5.0':
-    resolution: {integrity: sha512-wXv36yo+mfWllweN0Fq7sUs7PUiNopn7I0JpLTe3hGu6ZMR4CV7LqK1llhB18pndwpKoafQKb1et2DCJAOW20Q==}
 
   '@formatjs/ecma402-abstract@2.3.6':
     resolution: {integrity: sha512-HJnTFeRM2kVFVr5gr5kH1XP6K0JcJtE7Lzvtr3FS/so5f1kpsqqqxy5JF+FRaO6H2qmcMfAUIox7AJteieRtVw==}
@@ -4187,12 +4187,8 @@ packages:
   internmap@1.0.1:
     resolution: {integrity: sha512-lDB5YccMydFBtasVtxnZ3MRBHuaoE8GKsppq+EchKL2U4nK/DmEpPHNH8MZe5HkMtpSiTSOZwfN0tzYjO/lJEw==}
 
-  intl-messageformat-parser@5.5.1:
+  intl-messageformat-parser@5.4.2:
     resolution: {integrity: sha512-VHu6UWgWLJykaSeI1M2DpZMVRLuGCOV91i5I81xnJuAI0MKHP7ZJ3my5naOQkzG10ris3hBr+o5RElF1wQ5IXA==}
-    deprecated: 'We''ve written a new parser that''s 6x faster and is backwards compatible. Please use @formatjs/icu-messageformat-parser ([WARNING] Use 5.4.2 instead of 5.5.1, reason: https://github.com/formatjs/formatjs/issues/2005)'
-
-  intl-messageformat-parser@6.1.2:
-    resolution: {integrity: sha512-4GQDEPhl/ZMNDKwMsLqyw1LG2IAWjmLJXdmnRcHKeLQzpgtNYZI6lVw1279pqIkRk2MfKb9aDsVFzm565azK5A==}
     deprecated: We've written a new parser that's 6x faster and is backwards compatible. Please use @formatjs/icu-messageformat-parser
 
   intl-messageformat@10.7.18:
@@ -7577,10 +7573,6 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@formatjs/ecma402-abstract@1.5.0':
-    dependencies:
-      tslib: 2.8.1
-
   '@formatjs/ecma402-abstract@2.3.6':
     dependencies:
       '@formatjs/fast-memoize': 2.2.7
@@ -7639,7 +7631,7 @@ snapshots:
 
   '@formatjs/ts-transformer@2.13.0(ts-jest@29.4.6(@babel/core@7.28.5)(@jest/transform@29.7.0)(@jest/types@30.2.0)(babel-jest@29.7.0(@babel/core@7.28.5))(esbuild@0.25.12)(jest-util@30.2.0)(jest@29.7.0(@types/node@24.10.4)(ts-node@10.9.2(@types/node@24.10.4)(typescript@5.9.3)))(typescript@5.9.3))':
     dependencies:
-      intl-messageformat-parser: 6.1.2
+      intl-messageformat-parser: 5.4.2
       tslib: 2.8.1
       typescript: 4.9.5
     optionalDependencies:
@@ -9986,7 +9978,7 @@ snapshots:
       '@types/fs-extra': 9.0.13
       '@types/schema-utils': 2.4.0
       fs-extra: 9.1.0
-      intl-messageformat-parser: 5.5.1
+      intl-messageformat-parser: 5.4.2
       schema-utils: 2.7.1
     transitivePeerDependencies:
       - supports-color
@@ -11434,14 +11426,9 @@ snapshots:
 
   internmap@1.0.1: {}
 
-  intl-messageformat-parser@5.5.1:
+  intl-messageformat-parser@5.4.2:
     dependencies:
       '@formatjs/intl-numberformat': 5.7.6
-
-  intl-messageformat-parser@6.1.2:
-    dependencies:
-      '@formatjs/ecma402-abstract': 1.5.0
-      tslib: 2.8.1
 
   intl-messageformat@10.7.18:
     dependencies:
